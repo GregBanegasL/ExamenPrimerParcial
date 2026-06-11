@@ -15,7 +15,7 @@ public class GestionProductos {
 
         for (Producto p : productos) {
             if (p.getCodigo().equalsIgnoreCase(producto.getCodigo())) {
-                return false; // ya existe
+                return false;
             }
         }
 
