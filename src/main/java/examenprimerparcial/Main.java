@@ -25,8 +25,7 @@ public class Main {
             System.out.println("6. Salir");
             System.out.print("Seleccione una opcion: ");
 
-            opcion = leer.nextInt();
-            leer.nextLine();
+            opcion = Integer.parseInt(leer.nextLine());
 
             switch (opcion) {
 
@@ -54,25 +53,28 @@ public class Main {
                     }
 
                     System.out.print("Precio: ");
-                    double precio = leer.nextDouble();
+                    double precio = Double.parseDouble(leer.nextLine());
                     if (!Validador.positivo(precio)) {
                         System.out.println("Precio invalido");
                         break;
                     }
 
                     System.out.print("Cantidad: ");
-                    int cantidad = leer.nextInt();
+                    int cantidad = Integer.parseInt(leer.nextLine());
                     if (!Validador.positivo(cantidad)) {
                         System.out.println("Cantidad invalida");
                         break;
                     }
 
-                    leer.nextLine();
-
-                    gestion.agregarProducto(
+                    boolean agregado = gestion.agregarProducto(
                             new Producto(codigo, nombre, categoria, precio, cantidad));
 
-                    System.out.println("Producto agregado.");
+                    if (agregado) {
+                        System.out.println("Producto agregado.");
+                    } else {
+                        System.out.println("Error: el codigo ya existe.");
+                    }
+
                     break;
 
                 case 2:
@@ -90,7 +92,7 @@ public class Main {
                     }
 
                     if (gestion.eliminarProducto(eliminar)) {
-                        System.out.println("Producto eliminado.");
+                        System.out.println("Producto"+ eliminar +"eliminado.");
                     } else {
                         System.out.println("Producto no encontrado.");
                     }
@@ -98,7 +100,7 @@ public class Main {
                     break;
 
                 case 4:
-
+                    System.out.println("=============MODIFICACION DE PRODUCTO==========================");
                     System.out.print("Codigo: ");
                     String cod = leer.nextLine();
                     if (!Validador.texto(cod)) {
@@ -121,20 +123,18 @@ public class Main {
                     }
 
                     System.out.print("Nuevo precio: ");
-                    double nuevoPrecio = leer.nextDouble();
+                    double nuevoPrecio = Double.parseDouble(leer.nextLine());
                     if (!Validador.positivo(nuevoPrecio)) {
                         System.out.println("Precio invalido");
                         break;
                     }
 
                     System.out.print("Nueva cantidad: ");
-                    int nuevaCantidad = leer.nextInt();
+                    int nuevaCantidad = Integer.parseInt(leer.nextLine());
                     if (!Validador.positivo(nuevaCantidad)) {
                         System.out.println("Cantidad invalida");
                         break;
                     }
-
-                    leer.nextLine();
 
                     if (gestion.actualizarProducto(
                             cod,
@@ -152,7 +152,7 @@ public class Main {
                     break;
 
                 case 5:
-
+                    System.out.println("=============ESTADISTICAS==========================");
                     System.out.println("Total productos: " + gestion.contarProductos());
 
                     Producto caro = gestion.productoMasCaro();
@@ -167,6 +167,8 @@ public class Main {
                     }
 
                     System.out.println("Valor inventario: L. " + gestion.valorInventario());
+                    
+                    System.out.println("=============FIN=====ESTADISTICAS====================");
 
                     break;
 

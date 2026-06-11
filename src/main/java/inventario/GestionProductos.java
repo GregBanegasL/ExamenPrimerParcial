@@ -11,8 +11,16 @@ public class GestionProductos {
         productos = new ArrayList<>();
     }
 
-    public void agregarProducto(Producto producto) {
+    public boolean agregarProducto(Producto producto) {
+
+        for (Producto p : productos) {
+            if (p.getCodigo().equalsIgnoreCase(producto.getCodigo())) {
+                return false; // ya existe
+            }
+        }
+
         productos.add(producto);
+        return true;
     }
 
     public boolean eliminarProducto(String codigo) {
@@ -24,7 +32,6 @@ public class GestionProductos {
                 return true;
             }
         }
-
         return false;
     }
 
@@ -51,6 +58,7 @@ public class GestionProductos {
     }
 
     public void mostrarProductos() {
+        
 
         if (productos.isEmpty()) {
             System.out.println("No hay productos registrados.");
@@ -59,11 +67,11 @@ public class GestionProductos {
 
         for (Producto p : productos) {
 
-            System.out.println("-------------------------");
+            System.out.println("=============================================\n");
             System.out.println("Codigo: " + p.getCodigo());
             System.out.println("Nombre: " + p.getNombre());
             System.out.println("Categoria: " + p.getCategoria());
-            System.out.println("Precio: L. " + p.getPrecio());
+            System.out.println("Precio: " + p.getPrecio()+" LPS");
             System.out.println("Cantidad: " + p.getCantidad());
         }
     }
