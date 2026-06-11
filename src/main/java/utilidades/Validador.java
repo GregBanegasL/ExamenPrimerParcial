@@ -2,18 +2,15 @@ package utilidades;
 
 public class Validador {
 
-    // Evita textos vacíos
-    public static boolean textoValido(String texto) {
-        return texto != null && !texto.trim().isEmpty();
+    public static boolean texto(String t) {
+        return t != null && !t.trim().isEmpty();
     }
 
-    // Número positivo (precio o cantidad)
-    public static boolean numeroPositivo(double valor) {
-        return valor > 0;
+    public static boolean positivo(int n) {
+        return n > 0;
     }
 
-    // Entero positivo (cantidad)
-    public static boolean enteroPositivo(int valor) {
-        return valor > 0;
+    public static boolean positivo(double n) {
+        return n > 0;
     }
 }

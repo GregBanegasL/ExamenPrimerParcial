@@ -17,10 +17,10 @@ public class GestionProductos {
 
     public boolean eliminarProducto(String codigo) {
 
-        for (Producto p : productos) {
+        for (int i = 0; i < productos.size(); i++) {
 
-            if (p.getCodigo().equalsIgnoreCase(codigo)) {
-                productos.remove(p);
+            if (productos.get(i).getCodigo().equalsIgnoreCase(codigo)) {
+                productos.remove(i);
                 return true;
             }
         }
@@ -60,9 +60,9 @@ public class GestionProductos {
         for (Producto p : productos) {
 
             System.out.println("-------------------------");
-            System.out.println("Código:  " + p.getCodigo());
+            System.out.println("Codigo: " + p.getCodigo());
             System.out.println("Nombre: " + p.getNombre());
-            System.out.println("Categoría: " + p.getCategoria());
+            System.out.println("Categoria: " + p.getCategoria());
             System.out.println("Precio: L. " + p.getPrecio());
             System.out.println("Cantidad: " + p.getCantidad());
         }
@@ -92,7 +92,6 @@ public class GestionProductos {
         Producto caro = productos.get(0);
 
         for (Producto p : productos) {
-
             if (p.getPrecio() > caro.getPrecio()) {
                 caro = p;
             }
@@ -110,7 +109,6 @@ public class GestionProductos {
         Producto barato = productos.get(0);
 
         for (Producto p : productos) {
-
             if (p.getPrecio() < barato.getPrecio()) {
                 barato = p;
             }
