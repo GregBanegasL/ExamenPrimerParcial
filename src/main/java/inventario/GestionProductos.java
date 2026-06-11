@@ -60,7 +60,7 @@ public class GestionProductos {
         for (Producto p : productos) {
 
             System.out.println("-------------------------");
-            System.out.println("Código: " + p.getCodigo());
+            System.out.println("Código:  " + p.getCodigo());
             System.out.println("Nombre: " + p.getNombre());
             System.out.println("Categoría: " + p.getCategoria());
             System.out.println("Precio: L. " + p.getPrecio());
